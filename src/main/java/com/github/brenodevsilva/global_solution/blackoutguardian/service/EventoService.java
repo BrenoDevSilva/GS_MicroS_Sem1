@@ -23,7 +23,7 @@ public class EventoService {
         evento.setDataHoraInicio(dto.dataHoraInicio);
         evento.setDataHoraFim(dto.dataHoraFim);
         evento.setDescricaoPrejuizo(dto.descricaoPrejuizo);
-
+git
         Evento salvo = eventoRepository.save(evento);
 
         return toResponseDTO(salvo);
