@@ -107,8 +107,9 @@ POST http://localhost:8080/api/eventos
 ```
 
 **Outros endpoints:**
-- `GET /api/eventos` – lista todos
-- `GET /api/eventos/{cidade}` – lista por cidade
+- `GET /api/eventos` – lista todos os eventos
+- `GET /api/eventos/{cidade}` – lista eventos por cidade
+- `GET /api/clima/{cidade}` – lista clima atual da cidade
 
 ---
 
