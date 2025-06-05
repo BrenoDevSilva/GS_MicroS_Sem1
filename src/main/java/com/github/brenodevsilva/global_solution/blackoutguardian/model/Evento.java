@@ -83,4 +83,3 @@ public class Evento {
         this.descricaoPrejuizo = descricaoPrejuizo;
     }
 }
-

@@ -18,37 +18,26 @@ public class EventoService {
 
     public EventoResponseDTO cadastrarEvento(EventoRequestDTO dto) {
         Evento evento = new Evento();
-        evento.setCidade(dto.cidade);
-        evento.setBairro(dto.bairro);
-        evento.setDataHoraInicio(dto.dataHoraInicio);
-        evento.setDataHoraFim(dto.dataHoraFim);
-        evento.setDescricaoPrejuizo(dto.descricaoPrejuizo);
-git
+        evento.setCidade(dto.getCidade());
+        evento.setBairro(dto.getBairro());
+        evento.setDataHoraInicio(dto.getDataHoraInicio());
+        evento.setDataHoraFim(dto.getDataHoraFim());
+        evento.setDescricaoPrejuizo(dto.getDescricaoPrejuizo());
+
         Evento salvo = eventoRepository.save(evento);
 
-        return toResponseDTO(salvo);
+        return new EventoResponseDTO(salvo);
     }
 
     public List<EventoResponseDTO> listarTodosEventos() {
         return eventoRepository.findAll().stream()
-                .map(this::toResponseDTO)
+                .map(EventoResponseDTO::new)
                 .collect(Collectors.toList());
     }
 
     public List<EventoResponseDTO> listarEventosPorCidade(String cidade) {
         return eventoRepository.findByCidadeIgnoreCase(cidade).stream()
-                .map(this::toResponseDTO)
+                .map(EventoResponseDTO::new)
                 .collect(Collectors.toList());
-    }
-
-    private EventoResponseDTO toResponseDTO(Evento evento) {
-        EventoResponseDTO dto = new EventoResponseDTO();
-        dto.id = evento.getId();
-        dto.cidade = evento.getCidade();
-        dto.bairro = evento.getBairro();
-        dto.dataHoraInicio = evento.getDataHoraInicio();
-        dto.dataHoraFim = evento.getDataHoraFim();
-        dto.descricaoPrejuizo = evento.getDescricaoPrejuizo();
-        return dto;
     }
 }
